@@ -1,36 +1,150 @@
 :root {
-    --primary-bg: #0d1b2a;
-    --secondary-bg: #1b263b;
-    --accent-color: #415a77;
-    --text-color: #e0e1dd;
-    --button-bg: #415a77;
-    --button-hover-bg: #778da9;
-    --button-text-color: #e0e1dd;
-    --shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    --shadow-hover: 0 8px 16px rgba(0, 0, 0, 0.3);
-    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --border-radius: 12px;
-    --spacing: 1.5rem;
+    --primary-bg: #0a0e17;
+    --secondary-bg: #141c2f;
+    --accent-color: #2a4494;
+    --text-color: #ffffff;
+    --glass-bg: rgba(20, 28, 47, 0.7);
+    --border-radius: 15px;
+    --spacing: 2rem;
+    --transition: all 0.3s ease;
+    --shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    --shadow-hover: 0 8px 32px rgba(42, 68, 148, 0.3);
+    --text-color-secondary: rgba(255, 255, 255, 0.8);
 }
 
 body {
-    background: linear-gradient(to bottom, var(--secondary-bg), rgba(43, 43, 59, 0.98));
-    padding: 1.25rem var(--spacing);
-    backdrop-filter: blur(10px);
-    font-family: 'Inter', sans-serif;
-    background-color: var(--primary-bg);
-    color: var(--text-color);
+    background: linear-gradient(135deg, var(--primary-bg), var(--secondary-bg));
     margin: 0;
-    padding: 0;
-    line-height: 1.6;
     min-height: 100vh;
     overflow-x: hidden;
+    color: var(--text-color);
 }
 
-header {
-    background: linear-gradient(to bottom, var(--secondary-bg), rgba(43, 43, 59, 0.98));
-    padding: 1.25rem var(--spacing);
+.background-effects {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+    transition: background-color 0.1s ease;
+
+}
+
+.rain {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.drop {
+    position: absolute;
+    width: 2px;
+    height: 100px;
+    background: linear-gradient(transparent, rgba(255, 255, 255, 0.3));
+    animation: fall linear infinite;
+    filter: blur(1px);
+    opacity: 0.4;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh);
+        opacity: 0.3;
+    }
+}
+
+
+/* Rain effect */
+.rain {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    background: linear-gradient(to bottom, 
+        rgba(0, 0, 0, 0.2),
+        rgba(0, 0, 0, 0.1)
+    );
+}
+
+
+
+/* Glass card effect */
+.weather-card {
+    background: var(--glass-bg);
     backdrop-filter: blur(10px);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    margin: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.weather-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.temperature {
+    font-size: 4rem;
+    font-weight: 700;
+    text-align: center;
+    margin: 1rem 0;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.weather-details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: var(--border-radius);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .weather-card {
+        margin: 1rem;
+        padding: 1.5rem;
+    }
+
+    .temperature {
+        font-size: 3rem;
+    }
+}
+
+/* Smooth animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.weather-card, .temperature, .weather-details {
+    animation: fadeIn 0.5s ease forwards;
+}
+
+
+header {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1.25rem var(--spacing);
     box-shadow: var(--shadow);
     position: sticky;
     top: 0;
@@ -105,31 +219,6 @@ nav button:hover {
     transition: 0.4s;
 }
 
-@media (max-width: 768px) {
-    .nav-links {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        position: absolute;
-        top: 70px;
-        left: 0;
-        background-color: var(--primary-bg);
-        padding: 1rem;
-    }
-
-    .nav-links button {
-        width: 100%;
-        margin: 0.5rem 0;
-    }
-
-    .hamburger-menu {
-        display: flex;
-    }
-
-    .nav-links.active {
-        display: flex;
-    }
-}
 
 .team-photo-container {
     width: 100%;
@@ -359,3 +448,29 @@ nav button:hover {
     margin: 2rem 0;
 }
 
+
+
+.weather-card h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+
+.cloud {
+    position: absolute;
+    width: 250px;
+    height: 150px;
+    background: rgba(61, 71, 97, 0.6);
+    border-radius: 35px;
+    filter: blur(30px);
+    animation: floatCloud linear infinite;
+    pointer-events: none;
+}
+
+
+@keyframes floatCloud {
+    0% { transform: translateX(-150%) scale(1); opacity: 0; }
+    20% { opacity: 0.8; }
+    80% { opacity: 0.8; }
+    100% { transform: translateX(150vw) scale(1.2); opacity: 0; }
+}
