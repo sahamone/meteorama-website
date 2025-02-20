@@ -1,5 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap');
 
+
+html, body {
+    background-color: var(--primary-bg);
+}
+
+body.preload {
+    opacity: 0;
+}
+
+body.loaded {
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+}
+
+
 :root {
     --primary-bg: #0a0e17;
     --secondary-bg: #141c2f;
@@ -12,45 +27,45 @@
     --shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
     --shadow-hover: 0 8px 32px rgba(42, 68, 148, 0.3);
     --text-color-secondary: rgba(255, 255, 255, 0.8);
+    --button-bg: #2a4494;
+    --button-text-color: #ffffff;
+    --button-hover-bg: #1e337a;
+    --header-height: 80px;
 }
 
 * {
     font-family: 'Montserrat', sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
+    /* Affichage statique pour simplifier */
     background: url('./images/Fond/Neige.jpg') no-repeat center center fixed;
     background-size: cover;
-    animation: moveBackground 60s linear infinite;
     transition: background-image 1s ease-in-out;
-    margin: 0;
     min-height: 100vh;
     overflow-x: hidden;
     color: var(--text-color);
 }
 
-@keyframes moveBackground {
-    0% {
-        background-position: center center;
-    }
-    25% {
-        background-position: top left;
-    }
-    50% {
-        background-position: bottom right;
-    }
-    75% {
-        background-position: top right;
-    }
-    100% {
-        background-position: center center;
-    }
-}
+/* Suppression de l'animation de background */
 
+/* Header et navigation */
 .header-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    height: var(--header-height);
+    padding: 0 var(--spacing);
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 .home-button {
@@ -66,7 +81,7 @@ body {
 }
 
 .home-button:hover {
-    background-color: #1e337a;
+    background-color: var(--button-hover-bg);
     box-shadow: var(--shadow-hover);
 }
 
@@ -74,107 +89,6 @@ body {
     display: flex;
     align-items: center;
     gap: 1rem;
-}
-
-.background-effects {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 0;
-    overflow: hidden;
-    transition: background-color 0.1s ease;
-}
-
-.rain {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.1));
-}
-
-.drop {
-    position: absolute;
-    width: 2px;
-    height: 100px;
-    background: linear-gradient(transparent, rgba(255, 255, 255, 0.3));
-    animation: fall linear infinite;
-    filter: blur(1px);
-    opacity: 0.4;
-}
-
-@keyframes fall {
-    0% {
-        transform: translateY(-100px);
-        opacity: 0;
-    }
-    10% {
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(100vh);
-        opacity: 0.3;
-    }
-}
-
-.weather-card {
-    background: var(--glass-bg);
-    backdrop-filter: blur(10px);
-    border-radius: var(--border-radius);
-    padding: 2rem;
-    margin: 2rem;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: var(--shadow);
-    transition: var(--transition);
-}
-
-.weather-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-hover);
-}
-
-.temperature {
-    font-size: 4rem;
-    font-weight: 700;
-    text-align: center;
-    margin: 1rem 0;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-}
-
-.weather-details {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 1rem;
-    margin-top: 2rem;
-    padding: 1rem;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: var(--border-radius);
-}
-
-@media (max-width: 768px) {
-    .weather-card {
-        margin: 1rem;
-        padding: 1.5rem;
-    }
-
-    .temperature {
-        font-size: 3rem;
-    }
-}
-
-header {
-    background: var(--glass-bg);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 1.25rem var(--spacing);
-    box-shadow: var(--shadow);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    animation: slideDown 0.5s ease forwards;
 }
 
 .header-logo {
@@ -194,7 +108,6 @@ header h1 {
     margin: 0;
     color: var(--text-color);
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    animation: fadeIn 0.5s ease forwards;
 }
 
 nav {
@@ -232,6 +145,66 @@ nav button:hover {
     transition: 0.4s;
 }
 
+/* Effets de fond simplifiés */
+.background-effects {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+/* Suppression des animations sur la pluie, la neige et les nuages */
+.rain, .snow, .drop, .cloud, .flake {
+    animation: none;
+}
+
+/* Cartes météo */
+.weather-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    margin: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+/* Suppression de l'effet hover sur la box */
+
+/* Température */
+.temperature {
+    font-size: 4rem;
+    font-weight: 700;
+    text-align: center;
+    margin: 1rem 0;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.weather-details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: var(--border-radius);
+}
+
+@media (max-width: 768px) {
+    .weather-card {
+        margin: 1rem;
+        padding: 1.5rem;
+    }
+    .temperature {
+        font-size: 3rem;
+    }
+}
+
+/* Équipe */
 .team-photo-container {
     width: 100%;
     padding-top: 100%; /* 1:1 Aspect Ratio */
@@ -239,7 +212,6 @@ nav button:hover {
     overflow: hidden;
     border-radius: var(--border-radius);
 }
-
 .team-photo {
     position: absolute;
     top: 0;
@@ -249,20 +221,16 @@ nav button:hover {
     object-fit: cover;
     border-radius: var(--border-radius);
 }
-
 .team-section {
     padding: 2rem var(--spacing);
     text-align: center;
-    animation: fadeIn 1s ease forwards;
 }
-
 .team-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 2rem;
 }
-
 .team-member {
     background-color: var(--secondary-bg);
     border-radius: var(--border-radius);
@@ -271,36 +239,28 @@ nav button:hover {
     width: 250px;
     text-align: center;
     transition: var(--transition);
-    animation: fadeInUp 0.5s ease forwards;
 }
-
-.team-member:hover {
-    box-shadow: var(--shadow-hover);
-    transform: translateY(-10px);
-}
+/* Suppression de l'effet hover */
 
 .team-member h3 {
     margin: 1rem 0 0.5rem;
     color: var(--text-color);
 }
-
 .team-member p {
     color: var(--text-color);
 }
 
+/* Ressources */
 .resources-section {
     padding: 2rem var(--spacing);
     text-align: center;
-    animation: fadeIn 1s ease forwards;
 }
-
 .resources-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 2rem;
 }
-
 .resource-item {
     background-color: var(--secondary-bg);
     border-radius: var(--border-radius);
@@ -309,19 +269,13 @@ nav button:hover {
     width: 250px;
     text-align: center;
     transition: var(--transition);
-    animation: fadeInUp 0.5s ease forwards;
 }
-
-.resource-item:hover {
-    box-shadow: var(--shadow-hover);
-    transform: translateY(-10px);
-}
+/* Suppression de l'effet hover */
 
 .resource-item h3 {
     margin: 1rem 0 0.5rem;
     color: var(--text-color);
 }
-
 .resource-item a {
     display: inline-block;
     background-color: var(--button-bg);
@@ -331,18 +285,16 @@ nav button:hover {
     text-decoration: none;
     transition: var(--transition);
 }
-
 .resource-item a:hover {
     background-color: var(--button-hover-bg);
     box-shadow: var(--shadow-hover);
 }
 
+/* Chronologie */
 .timeline-section {
     padding: 2rem var(--spacing);
     text-align: center;
-    animation: fadeIn 1s ease forwards;
 }
-
 .timeline-container {
     display: flex;
     flex-direction: column;
@@ -351,7 +303,6 @@ nav button:hover {
     position: relative;
     margin-top: 2rem;
 }
-
 .timeline-item {
     background-color: var(--secondary-bg);
     border-radius: var(--border-radius);
@@ -361,15 +312,7 @@ nav button:hover {
     max-width: 600px;
     text-align: left;
     transition: var(--transition);
-    animation: fadeInUp 0.5s ease forwards;
-    position: relative;
 }
-
-.timeline-item:hover {
-    box-shadow: var(--shadow-hover);
-    transform: translateY(-10px);
-}
-
 .timeline-date {
     background-color: var(--accent-color);
     color: var(--button-text-color);
@@ -381,16 +324,13 @@ nav button:hover {
     transform: translateX(-50%);
     font-weight: bold;
 }
-
 .timeline-content {
     padding-top: 2rem;
 }
-
 .timeline-content h3 {
     margin: 0;
     color: var(--text-color);
 }
-
 .timeline-content p {
     color: var(--text-color);
 }
@@ -402,83 +342,8 @@ nav button:hover {
     margin: 2rem 0;
 }
 
+/* Simplification des effets visuels pour un rendu statique */
 .weather-card h2 {
     font-size: 2rem;
     margin-bottom: 1rem;
 }
-
-.cloud {
-    position: absolute;
-    width: 250px;
-    height: 150px;
-    background: rgba(61, 71, 97, 0.6);
-    border-radius: 35px;
-    filter: blur(30px);
-    animation: floatCloud linear infinite;
-    pointer-events: none;
-}
-
-@keyframes floatCloud {
-    0% { transform: translateX(-150%) scale(1); opacity: 0; }
-    20% { opacity: 0.8; }
-    80% { opacity: 0.8; }
-    100% { transform: translateX(150vw) scale(1.2); opacity: 0; }
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-@keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes slideDown {
-    from { transform: translateY(-100%); }
-    to { transform: translateY(0); }
-}
-
-.snow {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    pointer-events: none;
-}
-
-.flake {
-    position: absolute;
-    background: white;
-    border-radius: 50%;
-    animation: fallSnow linear infinite;
-    filter: blur(1px);
-    opacity: 0.8;
-}
-
-@keyframes fallSnow {
-    0% {
-        transform: translateY(-100px);
-        opacity: 0;
-    }
-    10% {
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(100vh);
-        opacity: 0.8;
-    }
-}
-
-@keyframes scrollBackground {
-    0% {
-        background-position: center top;
-    }
-    100% {
-        background-position: center bottom;
-    }
-}
-
-
-

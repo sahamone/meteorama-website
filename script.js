@@ -5,6 +5,10 @@ const rainSound = new Audio(rainSoundPath);
 rainSound.loop = true;
 rainSound.volume = 0.4;
 
+document.addEventListener('DOMContentLoaded', function() {
+    document.body.classList.add('loaded');
+});
+
 function toggleMenu() {
     const navLinks = document.querySelector('.nav-links');
     navLinks.classList.toggle('active');
