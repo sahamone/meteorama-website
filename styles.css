@@ -1,88 +1,96 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap');
-
-
-html, body {
-    background-color: var(--primary-bg);
-}
-
-body.preload {
-    opacity: 0;
-}
-
-body.loaded {
-    opacity: 1;
-    transition: opacity 0.5s ease-in-out;
-}
-
-
 :root {
     --primary-bg: #0a0e17;
     --secondary-bg: #141c2f;
     --accent-color: #2a4494;
     --text-color: #ffffff;
     --glass-bg: rgba(20, 28, 47, 0.7);
-    --border-radius: 15px;
+    --border-radius: 10px;
     --spacing: 2rem;
     --transition: all 0.3s ease;
-    --shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-    --shadow-hover: 0 8px 32px rgba(42, 68, 148, 0.3);
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    --shadow-hover: 0 6px 16px rgba(0, 0, 0, 0.4);
     --text-color-secondary: rgba(255, 255, 255, 0.8);
-    --button-bg: #2a4494;
+    --button-bg: #253a66;
+    --button-hover-bg: #57618a;
     --button-text-color: #ffffff;
-    --button-hover-bg: #1e337a;
-    --header-height: 80px;
-}
-
-* {
-    font-family: 'Montserrat', sans-serif;
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
 }
 
 body {
-    /* Affichage statique pour simplifier */
-    background: url('./images/Fond/Neige.jpg') no-repeat center center fixed;
-    background-size: cover;
-    transition: background-image 1s ease-in-out;
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, var(--primary-bg), var(--secondary-bg));
+    margin: 0;
     min-height: 100vh;
     overflow-x: hidden;
     color: var(--text-color);
+    display: flex;
+    flex-direction: column;
 }
 
-/* Suppression de l'animation de background */
+.background-effects {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+    transition: background-color 0.1s ease;
+}
 
-/* Header et navigation */
-.header-content {
+.rain {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.drop {
+    position: absolute;
+    width: 2px;
+    height: 100px;
+    background: linear-gradient(transparent, rgba(255, 255, 255, 0.3));
+    animation: fall linear infinite;
+    filter: blur(1px);
+    opacity: 0.4;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh);
+        opacity: 0.3;
+    }
+}
+
+.content-wrapper {
+    flex: 1;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: var(--header-height);
-    padding: 0 var(--spacing);
+    flex-direction: column;
+}
+
+header {
     background: var(--glass-bg);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1rem var(--spacing);
     box-shadow: var(--shadow);
     position: sticky;
     top: 0;
     z-index: 100;
+    animation: slideDown 0.5s ease forwards;
 }
 
-.home-button {
-    background-color: var(--accent-color);
-    border: none;
-    color: white;
-    padding: 10px 15px;
-    font-size: 16px;
-    font-weight: 600;
-    border-radius: var(--border-radius);
-    cursor: pointer;
-    transition: var(--transition);
-}
-
-.home-button:hover {
-    background-color: var(--button-hover-bg);
-    box-shadow: var(--shadow-hover);
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .logo-title {
@@ -103,11 +111,12 @@ body {
 }
 
 header h1 {
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-weight: 700;
     margin: 0;
     color: var(--text-color);
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    animation: fadeIn 0.5s ease forwards;
 }
 
 nav {
@@ -119,7 +128,7 @@ nav button {
     background-color: var(--button-bg);
     border: none;
     color: var(--button-text-color);
-    padding: 10px 20px;
+    padding: 0.5rem 1rem;
     cursor: pointer;
     font-size: 16px;
     border-radius: var(--border-radius);
@@ -145,92 +154,138 @@ nav button:hover {
     transition: 0.4s;
 }
 
-/* Effets de fond simplifiés */
-.background-effects {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 0;
-    overflow: hidden;
+.hero {
+    text-align: center;
+    padding: 4rem 2rem;
+    animation: fadeIn 0.8s ease forwards;
 }
 
-/* Suppression des animations sur la pluie, la neige et les nuages */
-.rain, .snow, .drop, .cloud, .flake {
-    animation: none;
-}
-
-/* Cartes météo */
-.weather-card {
-    background: var(--glass-bg);
-    backdrop-filter: blur(10px);
+.hero button {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    border: none;
     border-radius: var(--border-radius);
-    padding: 2rem;
-    margin: 2rem;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: var(--shadow);
+    background-color: var(--button-bg);
+    color: var(--text-color);
+    cursor: pointer;
     transition: var(--transition);
 }
-/* Suppression de l'effet hover sur la box */
 
-/* Température */
-.temperature {
-    font-size: 4rem;
-    font-weight: 700;
-    text-align: center;
-    margin: 1rem 0;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+.hero button:hover {
+    background-color: var(--button-hover-bg);
+    box-shadow: var(--shadow-hover);
 }
 
-.weather-details {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+.section-title {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: var(--accent-color);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.section-text {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    color: var(--text-color-secondary);
+}
+
+.features-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.feature-item {
+    background-color: var(--secondary-bg);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    padding: 1.5rem;
+    width: 250px;
+    text-align: center;
+    transition: var(--transition);
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+.feature-item:hover {
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-10px);
+}
+
+.feature-icon {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 1rem;
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(103%) contrast(103%);
+}
+
+.nav-buttons {
+    display: flex;
+    justify-content: center;
     gap: 1rem;
-    margin-top: 2rem;
+    padding: 2rem;
+}
+
+.nav-buttons button {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: var(--border-radius);
+    background-color: var(--button-bg);
+    color: var(--text-color);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.nav-buttons button:hover {
+    background-color: var(--button-hover-bg);
+    box-shadow: var(--shadow-hover);
+}
+
+.site-footer {
+    background: var(--secondary-bg);
+    text-align: center;
     padding: 1rem;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: var(--border-radius);
+    color: var(--text-color);
+    margin-top: auto;
 }
 
-@media (max-width: 768px) {
-    .weather-card {
-        margin: 1rem;
-        padding: 1.5rem;
-    }
-    .temperature {
-        font-size: 3rem;
-    }
+#sound-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--button-bg);
+    border: none;
+    color: var(--text-color);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 101;
+    transition: var(--transition);
 }
 
-/* Équipe */
-.team-photo-container {
-    width: 100%;
-    padding-top: 100%; /* 1:1 Aspect Ratio */
-    position: relative;
-    overflow: hidden;
-    border-radius: var(--border-radius);
+#sound-toggle:hover {
+    background-color: #555555;
 }
-.team-photo {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: var(--border-radius);
-}
+
 .team-section {
-    padding: 2rem var(--spacing);
+    padding: 4rem 2rem;
     text-align: center;
 }
+
 .team-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 2rem;
 }
+
 .team-member {
     background-color: var(--secondary-bg);
     border-radius: var(--border-radius);
@@ -239,28 +294,83 @@ nav button:hover {
     width: 250px;
     text-align: center;
     transition: var(--transition);
-}
-/* Suppression de l'effet hover */
-
-.team-member h3 {
-    margin: 1rem 0 0.5rem;
-    color: var(--text-color);
-}
-.team-member p {
-    color: var(--text-color);
+    cursor: pointer;
 }
 
-/* Ressources */
-.resources-section {
-    padding: 2rem var(--spacing);
+.team-member:hover {
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-10px);
+}
+
+.team-photo-container {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    border-radius: var(--border-radius);
+    margin-bottom: 1rem;
+    margin-top: 0rem;
+}
+
+.team-photo {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    object-position: center top; /* Ajoutez cette ligne pour mieux cadrer les visages */
+}
+
+.timeline-section {
+    padding: 4rem 2rem;
     text-align: center;
 }
+
+.timeline-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.timeline-item {
+    background-color: var(--secondary-bg);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    padding: 1rem;
+    transition: var(--transition);
+}
+
+.timeline-item:hover {
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-10px);
+}
+
+.timeline-date {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.timeline-content h3 {
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.timeline-content p {
+    font-size: 1rem;
+    margin: 0.5rem 0 0;
+}
+
+.resources-section {
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
 .resources-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 2rem;
 }
+
 .resource-item {
     background-color: var(--secondary-bg);
     border-radius: var(--border-radius);
@@ -270,80 +380,47 @@ nav button:hover {
     text-align: center;
     transition: var(--transition);
 }
-/* Suppression de l'effet hover */
+
+.resource-item:hover {
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-10px);
+}
 
 .resource-item h3 {
-    margin: 1rem 0 0.5rem;
-    color: var(--text-color);
+    font-size: 1.5rem;
+    margin: 0 0 1rem;
 }
+
 .resource-item a {
-    display: inline-block;
+    text-decoration: none;
+}
+
+.download-btn {
     background-color: var(--button-bg);
     color: var(--button-text-color);
+    border: none;
     padding: 0.5rem 1rem;
     border-radius: var(--border-radius);
-    text-decoration: none;
+    cursor: pointer;
     transition: var(--transition);
 }
-.resource-item a:hover {
+
+.download-btn:hover {
     background-color: var(--button-hover-bg);
     box-shadow: var(--shadow-hover);
 }
 
-/* Chronologie */
-.timeline-section {
-    padding: 2rem var(--spacing);
-    text-align: center;
-}
-.timeline-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
-    position: relative;
-    margin-top: 2rem;
-}
-.timeline-item {
-    background-color: var(--secondary-bg);
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow);
-    padding: 1rem;
-    width: 80%;
-    max-width: 600px;
-    text-align: left;
-    transition: var(--transition);
-}
-.timeline-date {
-    background-color: var(--accent-color);
-    color: var(--button-text-color);
-    padding: 0.5rem 1rem;
-    border-radius: var(--border-radius);
-    position: absolute;
-    top: -1rem;
-    left: 50%;
-    transform: translateX(-50%);
-    font-weight: bold;
-}
-.timeline-content {
-    padding-top: 2rem;
-}
-.timeline-content h3 {
-    margin: 0;
-    color: var(--text-color);
-}
-.timeline-content p {
-    color: var(--text-color);
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
-.section-divider {
-    width: 100%;
-    height: 2px;
-    background-color: var(--accent-color);
-    margin: 2rem 0;
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-/* Simplification des effets visuels pour un rendu statique */
-.weather-card h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
+@keyframes slideDown {
+    from { transform: translateY(-100%); }
+    to { transform: translateY(0); }
 }

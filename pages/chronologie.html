@@ -3,24 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chronologie</title>
+    <title>Chronologie - Météorama</title>
     <link rel="stylesheet" href="../styles.css">
     <script defer src="../script.js"></script>
 </head>
 <body>
     <div class="background-effects">
         <div class="rain"></div>
-        <div class="snow"></div> 
     </div>
     
     <header>
         <div class="header-content">
             <div class="logo-title">
-                <img src="../images/icons/logo_meteorama.png" alt="logo" class="header-logo" onclick="location.href='../index.html'">
+                <img src="../icons/logo_meteorama.png" alt="logo" class="header-logo" onclick="location.href='../index.html'">
                 <h1>Météorama</h1>
             </div>
             <nav class="nav-links">
-                <button onclick="location.href='../index.html'">Accueil</button>
                 <button onclick="location.href='equipe.html'">Equipe</button>
                 <button onclick="location.href='ressources.html'">Ressources</button>
                 <button onclick="location.href='chronologie.html'">Chronologie</button>
@@ -34,13 +32,13 @@
     </header>
     <main>
         <section class="timeline-section">
-            <h2>Chronologie du Projet</h2>
+            <h2 class="section-title">Chronologie du Projet</h2>
             <div class="timeline-container">
                 <div class="timeline-item">
                     <div class="timeline-date">27 Janvier 2025</div>
                     <div class="timeline-content">
                         <h3>Début du développement</h3>
-                        <p>Le cahier des charges étant validé, nous pouvons alors commencé le developpement du projet.</p>
+                        <p>Le cahier des charges étant validé, nous pouvons alors commencer le développement du projet.</p>
                     </div>
                 </div>
                 <div class="timeline-item">
@@ -53,5 +51,10 @@
             </div>
         </section>
     </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2025 Météorama. Tous droits réservés.</p>
+    </footer>
+    <button id="sound-toggle" aria-label="Activer le son">🔊</button>
 </body>
 </html>

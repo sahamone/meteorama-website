@@ -3,24 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ressources</title>
+    <title>Ressources - Météorama</title>
     <link rel="stylesheet" href="../styles.css">
     <script defer src="../script.js"></script>
 </head>
 <body>
     <div class="background-effects">
         <div class="rain"></div>
-        <div class="snow"></div> 
     </div>
     
     <header>
         <div class="header-content">
             <div class="logo-title">
-                <img src="../images/icons/logo_meteorama.png" alt="logo" class="header-logo" onclick="location.href='../index.html'">
+                <img src="../icons/logo_meteorama.png" alt="logo" class="header-logo" onclick="location.href='../index.html'">
                 <h1>Météorama</h1>
             </div>
             <nav class="nav-links">
-                <button onclick="location.href='../index.html'">Accueil</button>
                 <button onclick="location.href='equipe.html'">Equipe</button>
                 <button onclick="location.href='ressources.html'">Ressources</button>
                 <button onclick="location.href='chronologie.html'">Chronologie</button>
@@ -34,26 +32,31 @@
     </header>
     <main>
         <section class="resources-section">
-            <h2>Ressources Téléchargeables</h2>
+            <h2 class="section-title">Ressources Téléchargeables</h2>
             <div class="resources-container">
                 <div class="resource-item">
                     <h3>Jeu Météorama</h3>
-                    <a href="../ressources/test.txt" download>Télécharger</a>
+                    <a href="../ressources/test.txt" download><button class="download-btn">Télécharger</button></a>
+                </div>
+                <div class="resource-item">
+                    <h3>C.D.C</h3>
+                    <a href="../ressources/cdc.pdf" download><button class="download-btn">Télécharger</button></a>
                 </div>
                 <div class="resource-item">
                     <h3>Rapport 1</h3>
-                    <a href="../ressources/rapport1.pdf" download>Télécharger</a>
+                    <a href="../ressources/rapport2.pdf" download><button class="download-btn">Télécharger</button></a>
                 </div>
                 <div class="resource-item">
-                    <h3>Rapport 2</h3>
-                    <a href="../ressources/rapport2.pdf" download>Télécharger</a>
-                </div>
-                <div class="resource-item">
-                    <h3>Documentation</h3>
-                    <a href="../ressources/documentation.pdf" download>Télécharger</a>
+                    <h3>Repo GitHub</h3>
+                    <a href="https://github.com/sahamone/meteorama" download><button class="download-btn">Télécharger</button></a>
                 </div>
             </div>
         </section>
     </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2025 Météorama. Tous droits réservés.</p>
+    </footer>
+    <button id="sound-toggle" aria-label="Activer le son">🔊</button>
 </body>
 </html>

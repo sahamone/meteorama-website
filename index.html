@@ -3,39 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Météorama</title>
+    <title>Météorama - Accueil</title>
+    <!-- Police moderne -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <script defer src="script.js"></script>
 </head>
-
 <body>
     <div class="background-effects">
         <div class="rain"></div>
-        <div class="snow"></div> 
+        <div class="cloud" style="top:10%; left:-150px;"></div>
+        <div class="cloud" style="top:50%; left:-200px;"></div>
     </div>
-    <header>
-        <div class="header-content">
-            <div class="logo-title">
-                <img src="./images/icons/logo_meteorama.png" alt="logo" class="header-logo" onclick="location.href='index.html'">
-                <h1>Météorama</h1>
-            </div>
-            <nav class="nav-links">
-                <button onclick="location.href='index.html'">Accueil</button>
-                <button onclick="location.href='pages/equipe.html'">Equipe</button>
-                <button onclick="location.href='pages/ressources.html'">Ressources</button>
-                <button onclick="location.href='pages/chronologie.html'">Chronologie</button>
-            </nav>
-            <div class="hamburger-menu" onclick="toggleMenu()">
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-            </div>
-        </div>
-    </header>
 
-    <audio id="myAudio" autoplay muted>
-        <source src="./Sounds/Rain.mp3" type="audio/mpeg">
-    </audio>
+    <div class="content-wrapper">
+        <!-- En-tête simple -->
+        <header>
+            <div class="header-content">
+                <div class="logo-title" onclick="location.href='index.html'">
+                    <img src="icons/logo_meteorama.png" alt="Météorama" class="header-logo">
+                    <h1>Météorama</h1>
+                </div>
+                <nav class="nav-links">
+                    <button onclick="location.href='pages/equipe.html'">L'équipe</button>
+                    <button onclick="location.href='pages/ressources.html'">Ressources</button>
+                </nav>
+                <div class="hamburger-menu" onclick="toggleMenu()">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+            </div>
+        </header>
 
+        <!-- Contenu principal épuré -->
+        <main>
+            <!-- Section Hero -->
+            <section class="hero" id="home">
+                <div class="hero-content">
+                    <h2 class="hero-title">Bienvenue sur Météorama</h2>
+                    <p class="hero-subtitle">
+                        Suivez les prévision météorologique de votre ville à court terme grâce à notre application Météorama
+                    </p>
+                    <button class="hero-btn" onclick="location.href='https://github.com/sahamone/meteorama'">En savoir plus</button>
+                </div>
+            </section>
+
+            <!-- Section Fonctionnalités -->
+            <section id="features">
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <img src="icons/temps.png" class="feature-icon">
+                        <h3>Météo en temps réel</h3>
+                        <p>Météo et prévision selon les dernières données météorologique locales !</p>
+                    </div>
+                    <div class="feature-item">
+                        <img src="icons/emplacement.png" alt="Alertes personnalisées" class="feature-icon">
+                        <h3>Partout en France</h3>
+                        <p>Grâce à OpenWeatherMap, découvrez les prévisions météorologique partout en France !</p>
+                    </div>
+                    <div class="feature-item">
+                        <img src="icons/engrenage.png" alt="Analyse climatique" class="feature-icon">
+                        <h3>Modèle inédit</h3>
+                        <p>Les prévisions de météorama sont réalisée avec un modèle que nous avons nous-même développé !</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <footer class="site-footer">
+        <p>&copy; 2025 Météorama. Tous droits réservés.</p>
+    </footer>
+
+    <!-- Bouton Son -->
+    <button id="sound-toggle" aria-label="Activer le son">🔊</button>
 </body>
 </html>
