@@ -10,18 +10,20 @@
 <body>
     <div class="background-effects">
         <div class="rain"></div>
+        <div class="snow"></div>
     </div>
-    
     <header>
         <div class="header-content">
             <div class="logo-title">
-                <img src="../icons/logo_meteorama.png" alt="logo" class="header-logo" onclick="location.href='../index.html'">
-                <h1>Météorama</h1>
+                <a href="../index.html">
+                    <img src="../icons/logo_meteorama.png" alt="Météorama" class="header-logo">
+                    <h1>Météorama</h1>
+                </a>
             </div>
             <nav class="nav-links">
-                <button onclick="location.href='equipe.html'">Equipe</button>
-                <button onclick="location.href='ressources.html'">Ressources</button>
-                <button onclick="location.href='chronologie.html'">Chronologie</button>
+                <a href="equipe.html">Equipe</a>
+                <a href="ressources.html">Ressources</a>
+                <a href="chronologie.html">Chronologie</a>
             </nav>
             <div class="hamburger-menu" onclick="toggleMenu()">
                 <div class="bar"></div>
@@ -56,5 +58,6 @@
         <p>&copy; 2025 Météorama. Tous droits réservés.</p>
     </footer>
     <button id="sound-toggle" aria-label="Activer le son">🔊</button>
+    <button id="weather-toggle" aria-label="Activer/Désactiver la météo">🌤️</button>
 </body>
 </html>
