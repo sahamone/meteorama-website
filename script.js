@@ -25,20 +25,16 @@ function pauseWeatherSounds() {
     snowSound.pause();
     sunSound.pause();
 }
-
-/* Met à jour le son en fonction de l'icône météo et de l'état du bouton son */
 function updateWeatherSound() {
     const soundToggle = document.getElementById('sound-toggle');
     const isSoundEnabled = soundToggle.innerHTML === '🔊';
     const weatherToggle = document.getElementById('weather-toggle');
 
-    // Si le son est désactivé, on s'assure de tout pause()
     if (!isSoundEnabled) {
         pauseWeatherSounds();
         return;
     }
 
-    // Active uniquement le son correspondant à la météo courante
     pauseWeatherSounds();
     const icon = weatherToggle.innerHTML;
     switch (icon) {
@@ -54,26 +50,21 @@ function updateWeatherSound() {
     }
 }
 
-/* Bascule entre pluie, neige, soleil dans l'ordre : 🌧️ => ❄️ => 🌤️ => 🌧️ */
 function toggleWeather() {
     console.log('toggleWeather called');
     const weatherToggle = document.getElementById('weather-toggle');
     const icon = weatherToggle.innerHTML;
 
-    // Supprime d'abord tous les effets météo
     removeRain();
     removeSnow();
 
-    // Si on part de la pluie, on passe à la neige
     if (icon === '🌧️') {
         addSnow();
         weatherToggle.innerHTML = '❄️';
     }
-    // Si on part de la neige, on passe au soleil
     else if (icon === '❄️') {
         weatherToggle.innerHTML = '🌤️';
     }
-    // Sinon on repasse à la pluie
     else {
         addRain();
         weatherToggle.innerHTML = '🌧️';
@@ -81,7 +72,6 @@ function toggleWeather() {
     updateWeatherSound();
 }
 
-/* Active la pluie */
 function addRain() {
     console.log('addRain called');
     const background = document.querySelector('.background-effects');
@@ -95,7 +85,6 @@ function addRain() {
     }
 }
 
-/* Désactive la pluie */
 function removeRain() {
     console.log('removeRain called');
     const rain = document.querySelector('.rain');
@@ -104,7 +93,6 @@ function removeRain() {
     }
 }
 
-/* Active la neige */
 function addSnow() {
     console.log('addSnow called');
     const background = document.querySelector('.background-effects');
@@ -117,7 +105,6 @@ function addSnow() {
     }
 }
 
-/* Désactive la neige */
 function removeSnow() {
     console.log('removeSnow called');
     const snow = document.querySelector('.snow');
@@ -126,7 +113,6 @@ function removeSnow() {
     }
 }
 
-/* Création de la pluie */
 function createRainDrops() {
     const rain = document.querySelector('.rain');
     const numberOfDrops = 100;
@@ -142,7 +128,6 @@ function createRainDrops() {
     }
 }
 
-/* Création de la neige */
 function createSnowFlakes() {
     const snow = document.querySelector('.snow');
     const numberOfFlakes = 100;
@@ -159,7 +144,6 @@ function createSnowFlakes() {
     }
 }
 
-/* Éclairs uniquement si la pluie est active */
 function addLightningEffect() {
     const background = document.querySelector('.background-effects');
     setInterval(() => {
@@ -174,19 +158,16 @@ function addLightningEffect() {
     }, 100);
 }
 
-/* Menu burger (optionnel) */
 function toggleMenu() {
     const navLinks = document.querySelector('.nav-links');
     navLinks.classList.toggle('active');
 }
 
-/* Au chargement de la page, on initialise l’état du son et de la météo */
 document.addEventListener('DOMContentLoaded', () => {
     console.log('DOM fully loaded and parsed');
 
-    // Bouton du son
     const soundToggle = document.getElementById('sound-toggle');
-    soundToggle.innerHTML = '🔇'; // On part sur son désactivé
+    soundToggle.innerHTML = '🔇';
     soundToggle.addEventListener('click', () => {
         if (soundToggle.innerHTML === '🔇') {
             soundToggle.innerHTML = '🔊';
@@ -197,9 +178,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Bouton météo
     const weatherToggle = document.getElementById('weather-toggle');
-    // Vérifie la météo initiale pour définir un état cohérent
     const rainContainer = document.querySelector('.rain');
     const snowContainer = document.querySelector('.snow');
     if (rainContainer && rainContainer.children.length > 0) {
@@ -207,7 +186,6 @@ document.addEventListener('DOMContentLoaded', () => {
     } else if (snowContainer && snowContainer.children.length > 0) {
         weatherToggle.innerHTML = '❄️';
     } else {
-        // Par défaut : soleil
         weatherToggle.innerHTML = '🌤️';
     }
     weatherToggle.addEventListener('click', toggleWeather);

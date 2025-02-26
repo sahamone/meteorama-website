@@ -349,7 +349,7 @@ nav.nav-links a:hover {
 }
 
 .team-photo-container {
-    width: 100%;
+    width: 80%;
     height: 200px;
     overflow: hidden;
     border-radius: var(--border-radius);
@@ -361,7 +361,7 @@ nav.nav-links a:hover {
     width: 100%;
     height: auto;
     object-fit: cover;
-    object-position: center top; /* Ajoutez cette ligne pour mieux cadrer les visages */
+    object-position: center; /* Ajoutez cette ligne pour mieux cadrer les visages */
 }
 
 .timeline-section {
