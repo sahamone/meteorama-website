@@ -15,16 +15,15 @@
     
     <header>
         <div class="header-content">
-            <div class="logo-title">
-                <a href="../index.html">
-                    <img src="../icons/logo_meteorama.png" alt="Météorama" class="header-logo">
-                    <h1>Météorama</h1>
-                </a>
+            <div class="logo-container">
+                <img src="../icons/logo_meteorama.png" alt="Météorama" class="header-logo">
+            </div>
+            <div class="site-title-container">
+                <a href="../index.html"><h1>Météorama</h1></a>
             </div>
             <nav class="nav-links">
-                <a href="equipe.html">Equipe</a>
-                <a href="ressources.html">Ressources</a>
-                <a href="chronologie.html">Chronologie</a>
+                <a href="equipe.html">Our team</a>
+                <a href="chronologie.html">Chronology</a>
             </nav>
             <div class="hamburger-menu" onclick="toggleMenu()">
                 <div class="bar"></div>
@@ -34,43 +33,71 @@
         </div>
     </header>
     <main>
+        <!-- Présentation générale du groupe -->
+        <section class="group-overview">
+            <h2 class="section-title">Who we are</h2>
+            <p class="group-description">
+                We are a team of computer science enthusiasts who want to combine the best of Rust technology and meteorology to produce an application that can accompany you every day.
+            </p>
+        </section>
+    
         <section class="team-section">
-            <h2 class="section-title">Notre Équipe</h2>
+            <h2 class="section-title">Our team</h2>
             <div class="team-container">
                 <div class="team-member" onclick="window.open('https://github.com/sahamone')">
                     <div class="team-photo-container">
                         <img src="../images/groupe/sacha.jpg" alt="Sacha VAUDEY" class="team-photo">
                     </div>
-                    <h3>Sacha VAUDEY</h3>
-                    <p>Passionné par l'informatique et la météorologie, j'ai toujours voulu comprendre comment fonctionnaient les modèles de prévisions météorologiques.</p>
+                    <div class="member-info">
+                        <h3>Sacha VAUDEY</h3>
+                        <p class="humor-subtitle">The request eater</p>
+                        <div class="member-description-box">
+                            <p>Passionate about computers and meteorology, I've always wanted to understand how weather forecasting models worked.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="team-member" onclick="window.open('https://www.google.fr')">
+                <div class="team-member" onclick="window.open('https://github.com/aubinthome')">
                     <div class="team-photo-container">
                         <img src="../images/groupe/aubin.jpg" alt="Aubin THOME" class="team-photo">
                     </div>
-                    <h3>Aubin THOME</h3>
-                    <p>Passionné de domotique et de météo, j'ai déployé un réseau domotique avec Jeedom. Ce projet de prévision météorologique m'a tout de suite intéressé.</p>
+                    <div class="member-info">
+                        <h3>Aubin THOME</h3>
+                        <p class="humor-subtitle">The biggest fan of React.js</p>
+                        <div class="member-description-box">
+                            <p>Passionate about home automation and weather, I deployed a home automation network with Jeedom. I was immediately interested in this weather forecasting project.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="team-member" onclick="window.open('https://www.google.fr')">
+                <div class="team-member" onclick="window.open('https://github.com/hugo-moro')">
                     <div class="team-photo-container">
                         <img src="../images/groupe/hugo.jpg" alt="Hugo MORO" class="team-photo">
                     </div>
-                    <h3>Hugo MORO</h3>
-                    <p>Passionné de technologie et de botanique, ce projet de prévision climatique m'intéresse particulièrement pour son utilité concrète.</p>
+                    <div class="member-info">
+                        <h3>Hugo MORO</h3>
+                        <p class="humor-subtitle">Give him data, he'll give you forecasts</p>
+                        <div class="member-description-box">
+                            <p>Passionate about technology and botany, I'm particularly interested in this climate forecasting project because of its practical usefulness.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="team-member" onclick="window.open('https://www.google.fr')">
+                <div class="team-member" onclick="window.open('https://github.com/EskobaRoy')">
                     <div class="team-photo-container">
                         <img src="../images/groupe/roy.jpg" alt="Roy SABRA" class="team-photo">
                     </div>
-                    <h3>Roy SABRA</h3>
-                    <p>Passionné par la technologie, je suis curieux de découvrir le fonctionnement des systèmes météorologiques grâce à ce projet.</p>
+                    <div class="member-info">
+                        <h3>Roy SABRA</h3>
+                        <p class="humor-subtitle">He does not tolerate delays</p>
+                        <div class="member-description-box">
+                            <p>I have a passion for technology and I'm curious to find out how weather systems work thanks to this project.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
 
     <footer class="site-footer">
-        <p>&copy; 2025 Météorama. Tous droits réservés.</p>
+        <p>&copy; 2025 Météorama. All rights reserved.</p>
     </footer>
     <button id="sound-toggle" aria-label="Activer le son">🔊</button>
     <button id="weather-toggle" aria-label="Activer/Désactiver la météo">🌤️</button>

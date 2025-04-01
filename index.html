@@ -21,15 +21,14 @@
         <!-- En-tête simple -->
         <header>
             <div class="header-content">
-                <div class="logo-title">
-                    <a href="index.html">
-                        <img src="icons/logo_meteorama.png" alt="Météorama" class="header-logo">
-                        <h1>Météorama</h1>
-                    </a>
+                <div class="logo-container">
+                    <img src="icons/logo_meteorama.png" alt="Météorama" class="header-logo">
+                </div>
+                <div class="site-title-container">
+                    <a href="index.html"><h1>Météorama</h1></a>
                 </div>
                 <nav class="nav-links">
                     <a href="pages/equipe.html">L'équipe</a>
-                    <a href="pages/ressources.html">Ressources</a>
                     <a href="pages/chronologie.html">Chronologie</a>
                 </nav>
                 <div class="hamburger-menu" onclick="toggleMenu()">
@@ -45,11 +44,14 @@
             <!-- Section Hero -->
             <section class="hero" id="home">
                 <div class="hero-content">
-                    <h2 class="hero-title">Bienvenue sur Météorama</h2>
+                    <h2 class="hero-title">Welcome to Meteorama project</h2>
                     <p class="hero-subtitle">
-                        Suivez les prévision météorologique de votre ville à court terme grâce à notre application Météorama
+                        Track your city's weather forecasts quickly and easily using a statistical model we developed ourselves.
                     </p>
-                    <button class="hero-btn" onclick="location.href='https://github.com/sahamone/meteorama'">En savoir plus</button>
+                    <div class="hero-btn-group">
+                        <button class="hero-btn" onclick="location.href='https://github.com/sahamone/meteorama'">Read more</button>
+                        <button class="hero-btn download-btn" onclick="location.href='download.zip'">Download</button>
+                    </div>
                 </div>
             </section>
 
@@ -58,18 +60,18 @@
                 <div class="features-grid">
                     <div class="feature-item">
                         <img src="icons/temps.png" class="feature-icon">
-                        <h3>Météo en temps réel</h3>
-                        <p>Météo et prévision selon les dernières données météorologique locales !</p>
+                        <h3>Real-time weather</h3>
+                        <p>Weather and forecasting in near-real time thanks to data retrieved via OpenWeatherMap</p>
                     </div>
                     <div class="feature-item">
                         <img src="icons/emplacement.png" alt="Alertes personnalisées" class="feature-icon">
-                        <h3>Partout en France</h3>
-                        <p>Grâce à OpenWeatherMap, découvrez les prévisions météorologique partout en France !</p>
+                        <h3>All over France</h3>
+                        <p>Thanks to OpenWeatherMap, discover weather forecasts all over France</p>
                     </div>
                     <div class="feature-item">
                         <img src="icons/engrenage.png" alt="Analyse climatique" class="feature-icon">
-                        <h3>Modèle inédit</h3>
-                        <p>Les prévisions de météorama sont réalisée avec un modèle que nous avons nous-même développé !</p>
+                        <h3>Unique model</h3>
+                        <p>Meteorama forecasts are made using a model we developed ourselves!</p>
                     </div>
                 </div>
             </section>
@@ -77,7 +79,7 @@
     </div>
 
     <footer class="site-footer">
-        <p>&copy; 2025 Météorama. Tous droits réservés.</p>
+        <p>&copy; 2025 Météorama. All rights reserved.</p>
     </footer>
 
     <button id="sound-toggle" aria-label="Activer le son">🔊</button>
