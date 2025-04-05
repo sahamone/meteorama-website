@@ -190,3 +190,47 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     weatherToggle.addEventListener('click', toggleWeather);
 });
+
+// Animation au défilement - Reveal sections
+document.addEventListener('DOMContentLoaded', function() {
+    // Observer pour les animations au défilement
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('reveal-visible');
+            }
+        });
+    }, {threshold: 0.15});
+    
+    // Observer tous les éléments avec la classe reveal
+    document.querySelectorAll('.reveal').forEach(element => {
+        observer.observe(element);
+    });
+    
+    // Fonction pour toggle le menu mobile
+    window.toggleMenu = function() {
+        const hamburger = document.querySelector('.hamburger-menu');
+        const mobileNav = document.getElementById('mobileNav');
+        
+        hamburger.classList.toggle('active');
+        mobileNav.classList.toggle('show');
+    }
+});
+
+// Défilement fluide
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+            window.scrollTo({
+                top: targetElement.offsetTop - 80, // Ajustement pour la hauteur du header
+                behavior: 'smooth'
+            });
+        }
+    });
+});
