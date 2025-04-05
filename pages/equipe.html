@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Equipe - Météorama</title>
-        <!-- Polices modernes pour correspondre à l'application Tauri/React -->
+        <title>Team - Météorama</title>
+        <!-- Modern fonts to match the Tauri/React application -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Boldonse&display=swap" rel="stylesheet">
@@ -23,7 +23,7 @@
     </div>
     
     <div class="content-wrapper">
-        <!-- En-tête avec barre de navigation améliorée -->
+        <!-- Enhanced header with navigation bar -->
         <header>
             <div class="header-content">
                 <div class="logo-title-container">
@@ -53,16 +53,21 @@
         </header>
         
         <main>
-            <!-- Présentation générale du groupe -->
-            <section class="group-overview">
-                <h2 class="section-title reveal">Our team</h2>
-                <p class="group-description reveal reveal-delay-1">
-                    We're a team of students with a passion for computer science who want to combine the best of Rust technology and meteorology to produce an application that can accompany you on a daily basis.
-                </p>
+            <!-- Team Hero Section -->
+            <section class="hero team-hero" id="team-hero">
+                <div class="hero-content">
+                    <h2 class="hero-title reveal">The Meteorama Team</h2>
+                    <p class="hero-subtitle reveal reveal-delay-1">
+                        We're a team of passionate computer science students combining Rust technology and meteorology 
+                        to create an application that enhances your daily weather experience.
+                    </p>
+                </div>
             </section>
+
         
-            <section class="team-section">
-                <h2 class="section-title reveal">The members</h2>
+        
+            <section class="team-section section">
+                <h2 class="section-title reveal">Meet Our Team</h2>
                 <div class="team-container">
                     <div class="team-member reveal reveal-delay-1" onclick="window.open('https://github.com/sahamone')">
                         <div class="team-photo-container">
@@ -73,6 +78,9 @@
                             <p class="humor-subtitle">The request eater</p>
                             <div class="member-description-box">
                                 <p>Passionate about computers and meteorology, I've always wanted to understand how weather forecasting models worked.</p>
+                            </div>
+                            <div class="member-links">
+                                <a href="https://github.com/sahamone" class="member-link" target="_blank">GitHub</a>
                             </div>
                         </div>
                     </div>
@@ -86,6 +94,9 @@
                             <div class="member-description-box">
                                 <p>Passionate about home automation and weather, I deployed a home automation network with Jeedom. I was immediately interested in this weather forecasting project.</p>
                             </div>
+                            <div class="member-links">
+                                <a href="https://github.com/aubinthome" class="member-link" target="_blank">GitHub</a>
+                            </div>
                         </div>
                     </div>
                     <div class="team-member reveal reveal-delay-3" onclick="window.open('https://github.com/hugo-moro')">
@@ -97,6 +108,9 @@
                             <p class="humor-subtitle">Give him data, he'll give you forecasts</p>
                             <div class="member-description-box">
                                 <p>Passionate about technology and botany, I'm particularly interested in this climate forecasting project because of its practical usefulness.</p>
+                            </div>
+                            <div class="member-links">
+                                <a href="https://github.com/hugo-moro" class="member-link" target="_blank">GitHub</a>
                             </div>
                         </div>
                     </div>
@@ -110,7 +124,28 @@
                             <div class="member-description-box">
                                 <p>I have a passion for technology and I'm curious to find out how weather systems work thanks to this project.</p>
                             </div>
+                            <div class="member-links">
+                                <a href="https://github.com/EskobaRoy" class="member-link" target="_blank">GitHub</a>
+                            </div>
                         </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section values-section">
+                <h2 class="section-title reveal">Our Objectives</h2>
+                <div class="stack-container">
+                    <div class="stack-column reveal reveal-delay-1">
+                        <h3>Learn</h3>
+                        <p>Learn to work as part of a team and manage a project from conception to final delivery</p>
+                    </div>
+                    <div class="stack-column reveal reveal-delay-2">
+                        <h3>Discover</h3>
+                        <p>Discover all the facets of project realization, as well as all the technologies at our disposal to make it happen.</p>
+                    </div>
+                    <div class="stack-column reveal reveal-delay-3">
+                        <h3>Programming</h3>
+                        <p>Program with modern RUST tools and u Web technologies to deliver a fast, modern and intuitive application</p>
                     </div>
                 </div>
             </section>
@@ -123,7 +158,7 @@
             <p>Created by: Moro Hugo, Sabra Roy, Thomé Aubin, Vaudey Sacha</p>
         </div>
     </footer>
-    <button id="sound-toggle" aria-label="Activer le son">🔊</button>
-    <button id="weather-toggle" aria-label="Activer/Désactiver la météo">🌤️</button>
+    <button id="sound-toggle" aria-label="Toggle sound">🔊</button>
+    <button id="weather-toggle" aria-label="Toggle weather">🌤️</button>
 </body>
 </html>
